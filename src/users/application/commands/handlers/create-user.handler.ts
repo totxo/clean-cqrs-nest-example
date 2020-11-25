@@ -11,6 +11,6 @@ export class CreateUserHandler implements ICommandHandler<CreateUserCommand> {
   }
 
   async execute(command: CreateUserCommand): Promise<void> {
-    this.userRepository.create(command.payload);
+    return this.userRepository.create(command.payload);
   }
 }
