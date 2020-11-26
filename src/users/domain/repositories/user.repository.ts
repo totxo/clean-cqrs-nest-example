@@ -1,9 +1,8 @@
-import { CreateUserDto } from '../dto/create-user.dto';
 import { User } from '../entities/user.entity';
 
-export interface UserRepository {
+export abstract class UserRepository {
 
-  create(user: User): void
-  findAll(): Promise<any>
+  abstract create(user: User): void;
+  abstract async findAll(): Promise<any>;
 
 }

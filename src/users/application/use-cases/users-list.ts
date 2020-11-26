@@ -1,15 +1,15 @@
-import { Injectable } from '@nestjs/common';
-import { FileUserRepository } from '../../infrastructure/repositories/memory-user-repository';
+import { Inject, Injectable } from '@nestjs/common';
+import { UserRepository } from '../../domain/repositories/user.repository';
 
 @Injectable()
 export class UsersList {
 
   constructor(
-    private fileUserRepository: FileUserRepository
+    @Inject('USER_REPOSITORY') private userRepository: UserRepository
   ) {
   }
 
   public findAll() {
-    return this.fileUserRepository.findAll()
+    return this.userRepository.findAll()
   }
 }

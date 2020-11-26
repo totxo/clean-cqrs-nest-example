@@ -6,7 +6,7 @@ import { UsersGetController } from './controllers/users-get.controller';
 import { QueryHandlers } from '../application/queries/handlers';
 import { UserCreator } from '../application/use-cases/user-creator';
 import { UsersList } from '../application/use-cases/users-list';
-import { FileUserRepository } from './repositories/memory-user-repository';
+import { UserRepository } from '../domain/repositories/user.repository';
 
 @Module({
   imports: [CqrsModule],
@@ -16,13 +16,11 @@ import { FileUserRepository } from './repositories/memory-user-repository';
   ],
   providers: [
     {
-      provide: UserCreator,
-      useClass: FileUserRepository
+      provide: 'USER_REPOSITORY',
+      useValue: UserRepository
     },
-    {
-      provide: UsersList,
-      useClass: FileUserRepository
-    },
+    UserCreator,
+    UsersList,
     ...CommandHandlers,
     ...QueryHandlers
   ]

@@ -1,16 +1,18 @@
-import { Injectable } from '@nestjs/common';
-import { FileUserRepository } from '../../infrastructure/repositories/memory-user-repository';
+import { Inject, Injectable } from '@nestjs/common';
 import { User } from '../../domain/entities/user.entity';
+import { UserRepository } from '../../domain/repositories/user.repository';
 
 @Injectable()
 export class UserCreator {
 
   constructor(
-    private fileUserRepository: FileUserRepository
+    @Inject('USER_REPOSITORY') private userRepository: UserRepository
   ) {
   }
 
   public create(user: User) {
-    this.fileUserRepository.create(user)
+    this.userRepository.create(user)
   }
+
+
 }
