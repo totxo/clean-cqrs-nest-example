@@ -1,23 +1,27 @@
 import { UserRepository } from '../../domain/repositories/user.repository';
-import { CreateUserDto } from '../../domain/dto/create-user.dto';
+import * as fs from 'fs'
 import { User } from '../../domain/entities/user.entity';
 import { Logger } from '@nestjs/common';
 
-export class MemoryUserRepository implements UserRepository {
+export class FileUserRepository implements UserRepository {
 
-  private logger = new Logger('MemoryUserRepository')
-  private users = [];
+  private logger = new Logger('FileUserRepository')
 
+  create(user: User) {
+    const newUser = JSON.stringify(user)
+    fs.appendFile('fileUserRepository.txt', newUser, (err) => {
+      if (err) {
+        this.logger.error('Failed trying save')
+        throw new Error()
+      }
 
-  async create(payload: CreateUserDto) {
-    const { name } = payload;
-    const newUser = new User(name);
-    this.users.push(newUser)
-
-    this.logger.verbose(`Added user: ${JSON.stringify(newUser)}`);
+      this.logger.verbose(`Added user: ${newUser}`);
+    })
   }
 
   async findAll() {
-    return this.users;
+    const file = fs.readFileSync('fileUserRepository.txt', 'utf-8');
+    this.logger.verbose(file);
+    return file;
   }
 }

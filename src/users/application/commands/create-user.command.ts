@@ -1,6 +1,9 @@
 import { CreateUserDto } from '../../domain/dto/create-user.dto';
+import { ICommand } from '@nestjs/cqrs';
 
 export class CreateUserCommand {
-  constructor( public payload: CreateUserDto) {
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  constructor( public name: string): ICommand {
   }
 }

@@ -13,6 +13,6 @@ export class UserPostController {
 
   @Post()
   create(@Body() createUserDto: CreateUserDto) {
-    return this.commandBus.execute(new CreateUserCommand(createUserDto))
+    return this.commandBus.execute(new CreateUserCommand(createUserDto.name))
   }
 }

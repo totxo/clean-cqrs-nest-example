@@ -1,16 +1,19 @@
 import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
 import { CreateUserCommand } from '../create-user.command';
-import { UserRepository } from '../../../domain/repositories/user.repository';
+import { UserCreator } from '../../use-cases/user-creator';
+import { User } from '../../../domain/entities/user.entity';
 
 @CommandHandler(CreateUserCommand)
 export class CreateUserHandler implements ICommandHandler<CreateUserCommand> {
 
   constructor(
-    private userRepository: UserRepository
+    private userCreator: UserCreator
   ) {
   }
 
   async execute(command: CreateUserCommand): Promise<void> {
-    return this.userRepository.create(command.payload);
+
+    const user = new User(command.name)
+    this.userCreator.create(user);
   }
 }
