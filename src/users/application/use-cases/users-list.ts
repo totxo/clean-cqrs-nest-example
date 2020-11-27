@@ -5,7 +5,7 @@ import { UserRepository } from '../../domain/repositories/user.repository';
 export class UsersList {
 
   constructor(
-    @Inject('USER_REPOSITORY') private userRepository: UserRepository
+    private userRepository: UserRepository
   ) {
   }
 

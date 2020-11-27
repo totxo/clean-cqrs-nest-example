@@ -12,8 +12,6 @@ export class CreateUserHandler implements ICommandHandler<CreateUserCommand> {
   }
 
   async execute(command: CreateUserCommand): Promise<void> {
-
-    const user = new User(command.name)
-    this.userCreator.create(user);
+    this.userCreator.create(command.name);
   }
 }

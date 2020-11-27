@@ -7,6 +7,7 @@ import { QueryHandlers } from '../application/queries/handlers';
 import { UserCreator } from '../application/use-cases/user-creator';
 import { UsersList } from '../application/use-cases/users-list';
 import { UserRepository } from '../domain/repositories/user.repository';
+import { FileUserRepository } from './repositories/persistence/file-user-repository';
 
 @Module({
   imports: [CqrsModule],
@@ -16,8 +17,8 @@ import { UserRepository } from '../domain/repositories/user.repository';
   ],
   providers: [
     {
-      provide: 'USER_REPOSITORY',
-      useValue: UserRepository
+      provide: UserRepository,
+      useClass: FileUserRepository
     },
     UserCreator,
     UsersList,

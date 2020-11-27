@@ -6,11 +6,12 @@ import { UserRepository } from '../../domain/repositories/user.repository';
 export class UserCreator {
 
   constructor(
-    @Inject('USER_REPOSITORY') private userRepository: UserRepository
+    private userRepository: UserRepository
   ) {
   }
 
-  public create(user: User) {
+  public create(name: string) {
+    const user = new User(name)
     this.userRepository.create(user)
   }
 
