@@ -3,7 +3,7 @@ import * as fs from 'fs'
 import { User } from '../../../domain/entities/user.entity';
 import { Logger } from '@nestjs/common';
 
-export class FileUserRepository extends UserRepository {
+export class FileUserRepository implements UserRepository {
 
   private logger = new Logger('FileUserRepository')
 

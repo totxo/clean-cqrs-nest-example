@@ -6,7 +6,7 @@ import { UsersGetController } from './controllers/users-get.controller';
 import { QueryHandlers } from '../application/queries/handlers';
 import { UserCreator } from '../application/use-cases/user-creator';
 import { UsersList } from '../application/use-cases/users-list';
-import { UserRepository } from '../domain/repositories/user.repository';
+import { USER_REPOSITORY } from '../domain/repositories/user.repository';
 import { FileUserRepository } from './repositories/persistence/file-user-repository';
 
 @Module({
@@ -17,7 +17,7 @@ import { FileUserRepository } from './repositories/persistence/file-user-reposit
   ],
   providers: [
     {
-      provide: UserRepository,
+      provide: USER_REPOSITORY,
       useClass: FileUserRepository
     },
     UserCreator,

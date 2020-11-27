@@ -1,8 +1,10 @@
 import { User } from '../entities/user.entity';
 
-export abstract class UserRepository {
+export const USER_REPOSITORY = 'USER_REPOSITORY';
 
-  abstract create(user: User): void;
-  abstract async findAll(): Promise<any>;
+export interface UserRepository {
+
+  create(user: User): void;
+  findAll(): Promise<any>;
 
 }
