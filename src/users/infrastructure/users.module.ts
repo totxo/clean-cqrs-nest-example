@@ -8,6 +8,7 @@ import { UserCreator } from '../application/use-cases/user-creator';
 import { UsersList } from '../application/use-cases/users-list';
 import { USER_REPOSITORY } from '../domain/repositories/user.repository';
 import { FileUserRepository } from './repositories/persistence/file-user-repository';
+import { EventHandlers } from '../application/events/handlers';
 
 @Module({
   imports: [CqrsModule],
@@ -22,6 +23,7 @@ import { FileUserRepository } from './repositories/persistence/file-user-reposit
     },
     UserCreator,
     UsersList,
+    ...EventHandlers,
     ...CommandHandlers,
     ...QueryHandlers
   ]

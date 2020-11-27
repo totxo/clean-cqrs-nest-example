@@ -1,4 +1,3 @@
-import { CreateUserDto } from '../../domain/dto/create-user.dto';
 import { ICommand } from '@nestjs/cqrs';
 
 export class CreateUserCommand {

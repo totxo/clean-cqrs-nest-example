@@ -1,9 +1,12 @@
 import { AggregateRoot } from '@nestjs/cqrs';
 import { InternalServerErrorException } from '@nestjs/common';
 
-export class User {
+export class User extends AggregateRoot {
 
-  constructor(public name: string) {
+  constructor(
+    private readonly name: string
+  ) {
+    super();
     this.validate()
   }
 
