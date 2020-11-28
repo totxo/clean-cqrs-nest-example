@@ -1,6 +1,6 @@
-import { UserRepository } from '../../../domain/repositories/user.repository';
+import { UserRepository } from '../../../domain/user.repository';
 import * as fs from 'fs'
-import { User } from '../../../domain/entities/user.entity';
+import { User } from '../../../domain/user.entity';
 import { Logger } from '@nestjs/common';
 
 export class FileUserRepository implements UserRepository {
