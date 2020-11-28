@@ -14,7 +14,4 @@ export class User extends AggregateRoot {
     return user;
   }
 
-  getName(): UserName {
-    return this.name;
-  }
 }

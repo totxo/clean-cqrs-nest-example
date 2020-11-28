@@ -12,9 +12,7 @@ export class CreateUserCommandHandler implements ICommandHandler<CreateUserComma
   }
 
   async execute(command: CreateUserCommand): Promise<void> {
-
     const name = new UserName(command.name)
-    console.log(name);
     await this.userCreator.create(name);
   }
 }

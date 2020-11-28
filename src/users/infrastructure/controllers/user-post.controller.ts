@@ -15,4 +15,5 @@ export class UserPostController {
   create(@Body() createUserDto: CreateUserDto) {
     return this.commandBus.execute(new CreateUserCommand(createUserDto.name))
   }
+
 }
