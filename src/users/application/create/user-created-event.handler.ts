@@ -8,6 +8,22 @@ export class UserCreatedEventHandler implements IEventHandler<UserCreatedEventHa
   private logger = new Logger('UserCreatedEventHandler');
 
   async handle(event: UserCreatedEventHandler): Promise<any> {
-    this.logger.verbose(JSON.stringify(event));
+
+    //@TODO implement rabbit
+
+    const payload = {
+      data: {
+        id: event['eventId'],
+        type: 'vasco.user.event.1.user.created',
+        occurred_on: event['occurredOn'],
+        attributes: {
+          name: event['name']
+        }
+      },
+      meta: {
+        host: 'loaclhost'
+      }
+    }
+    this.logger.debug(payload);
   }
 }

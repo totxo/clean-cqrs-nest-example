@@ -1,5 +1,5 @@
-import { ListUsersCommandHandler } from './list-users-command.handler';
+import { ListUsersQueryHandler } from './list-users-query.handler';
 
 export const QueryHandlers = [
-  ListUsersCommandHandler
+  ListUsersQueryHandler
 ]
