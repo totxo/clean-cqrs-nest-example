@@ -7,6 +7,10 @@ export class StringValueObject {
     this.ensureIsString(value);
   }
 
+  public getValue() {
+    return this.value;
+  }
+
   private ensureIsString(value:string): void {
     if (typeof value !== 'string') {
       throw new Error('The type of name should be string');
